@@ -203,5 +203,11 @@ In Vitis HLS, select **Run C Synthesis**. Once synthesis finishes, open the **Sy
 
 These estimates indicate the accelerator’s expected execution time and FPGA resource requirements.
 
+### 16. Run C simulation and inspect the results
+
+In Vitis HLS, select **Run C Simulation**. In the simulation settings, enable **Clean Build**, then run the simulation.
+
+Once simulation finishes, inspect the resulting confusion matrices to assess the CNN’s classification performance on the test dataset.
+
 
 
