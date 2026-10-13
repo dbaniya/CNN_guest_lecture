@@ -158,4 +158,4 @@ During the Vitis HLS project setup, go to the Solution Configuration window and 
 
 `xc7z020clg400-1`
 
-This is the Zynq-7020 device used on the **PYNQ-Z2** board.
+This is the Zynq-7020 device used on the PYNQ-Z2 board.
