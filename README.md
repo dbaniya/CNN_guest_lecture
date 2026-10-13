@@ -220,5 +220,11 @@ In the **Export RTL** window:
 
 Start the export and wait for it to finish.
 
+### 18. Locate the exported IP package
+
+After **Export RTL** finishes, open your Vitis HLS project’s solution folder, then open the `impl` folder.
+
+Confirm that `export.zip` is present. This ZIP file contains the packaged CNN IP for use in Vivado.
+
 
 
