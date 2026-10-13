@@ -275,6 +275,16 @@ In the export wizard, select **Include bitstream**, choose the output location, 
 This creates an `.xsa` hardware platform file containing the hardware design and bitstream for use in Vitis.
 
 
+### 24. Locate the exported XSA file
+
+Open a terminal and run the following command to search your home folder and its subfolders for `.xsa` files:
+
+```bash
+find ~ -type f -name "*.xsa"
+```
+
+The output lists the full paths of matching files. Note the path of the `.xsa` file exported from your Vivado project, as you will select it when creating the platform project in Vitis.
+
 
 
 
