@@ -299,5 +299,11 @@ Open **Vitis** and select **Create Platform Project**.
 7. Click **Finish** to create the platform project.
 
 
+### 26. Create an application project in Vitis
+
+After creating and generating the platform project, select **File → New → Application Project**.
+
+In the wizard, choose **Select a platform from repository**, select the platform you created in the previous step, and click **Next**.
+
 
 
