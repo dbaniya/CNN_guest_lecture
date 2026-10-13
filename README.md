@@ -86,3 +86,24 @@ Run the installer and select **Vitis** as the installation product. Ensure that 
 Complete the installation. **Version 2020.2 is preferred** because it matches the tools used in this lab.
 
 **Version note:** You may use a newer release, but menus, tool names, and project workflows may differ.
+
+### 4. Download the training dataset
+
+Download `new_training_data` from the dataset link provided in the course materials. If the download is compressed, extract it into your project folder.
+
+Note the location of the `new_training_data` folder, as you will use this path in the data augmentation script.
+
+### 5. Augment the training dataset
+
+Open the data augmentation script and set `DATA_ROOT` to the absolute path of your `new_training_data` folder:
+
+```python
+DATA_ROOT = Path("/absolute/path/to/new_training_data")
+OUTPUT_ROOT = DATA_ROOT.parent / f"{DATA_ROOT.name}_aug"
+```
+
+Replace `/absolute/path/to/new_training_data` with the actual dataset path. `OUTPUT_ROOT` creates an output folder named `new_training_data_aug` alongside the original dataset folder.
+
+Save and run the script with the `cnn_env` virtual environment activated. After it finishes, confirm that `new_training_data_aug` contains the augmented images.
+
+
