@@ -309,4 +309,10 @@ In the wizard, choose **Select a platform from repository**, select the platform
 
 On the **Domain** screen, select the existing **standalone_domain** and click **Next**.
 
+### 28. Select the Hello World template
+
+On the **Templates** screen, select **Hello World** and click **Finish**.
+
+This creates a starter bare-metal C application, which you will modify in the next step to control the CNN accelerator.
+
 
