@@ -235,5 +235,13 @@ Create a new project in **Vivado** and build the design shown in the course slid
 - Confirm that the custom CNN IP appears in the **IP Catalog**, then add it and the remaining IP blocks. Connect them as shown in the slides.
 - Open the **Address Editor** and confirm that the CNN IP’s AXI control interface has an assigned address. If it appears under **Unassigned**, click **Auto Assign Address**.
 
+- ### 20. Set the top module in Vivado
+
+In Vivado’s **Sources** window, expand **Design Sources**, right-click the appropriate top-level module for your design, and select **Set as Top**.
+
+For a block design, select its generated **HDL wrapper** as the top module.
+
+
+
 
 
