@@ -76,3 +76,13 @@ Verify the installed packages:
 ```bash
 python -m pip list
 ```
+
+### 3. Install Vitis, Vitis HLS, and Vivado
+
+Download the **Unified Installer for version 2020.2** from the [AMD download page](https://www.amd.com/en/support/downloads/adaptive-socs-and-fpgas/development-tools/2020-2.html).
+
+Run the installer and select **Vitis** as the installation product. Ensure that **Vitis, Vitis HLS, and Vivado** are included, along with device support for **Zynq-7000**.
+
+Complete the installation. **Version 2020.2 is preferred** because it matches the tools used in this lab.
+
+**Version note:** You may use a newer release, but menus, tool names, and project workflows may differ.
