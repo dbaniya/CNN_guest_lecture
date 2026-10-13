@@ -188,4 +188,8 @@ Copy the `weights_cstyle_folded` folder generated during Python training into th
 
 Keep the folder name `weights_cstyle_folded` unchanged and preserve all files inside it so the HLS source code can locate the exported weights.
 
+### 14. Download the HLS test dataset
 
+Download `dwpw_cnn_testing_data_aug_txt` from the course GitHub repository. If compressed, extract it into the same folder as the HLS source files, test bench, and `weights_cstyle_folded` folder.
+
+Keep the name `dwpw_cnn_testing_data_aug_txt` unchanged so the test bench can locate the test data.
