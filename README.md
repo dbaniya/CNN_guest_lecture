@@ -209,5 +209,16 @@ In Vitis HLS, select **Run C Simulation**. In the simulation settings, enable **
 
 Once simulation finishes, inspect the resulting confusion matrices to assess the CNN’s classification performance on the test dataset.
 
+### 17. Export the RTL as a Vivado IP
+
+In Vitis HLS, select **Solution → Export RTL**.
+
+In the **Export RTL** window:
+
+- Set the export format to **Vivado IP (.zip)**.
+- Select **VHDL** as the RTL language for evaluating the generated RTL.
+
+Start the export and wait for it to finish.
+
 
 
