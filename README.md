@@ -154,7 +154,7 @@ This name must exactly match the top-level function in the provided C++ source c
 
 ### 10. Select the target FPGA part
 
-During the **Vitis HLS project setup**, go to the **Solution Configuration** window and select the following FPGA part:
+During the Vitis HLS project setup, go to the Solution Configuration window and select the following FPGA part:
 
 `xc7z020clg400-1`
 
