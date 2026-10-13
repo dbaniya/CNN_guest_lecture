@@ -171,4 +171,10 @@ Download the following files from the course GitHub repository and save them tog
 Open your Vitis HLS project and add all three files under **Source**.
 
 
+### 12. Add the test bench file
+
+Download `ds_cnn_tb.cpp` from the course GitHub repository and save it in the same folder as the three source files.
+
+In your Vitis HLS project, add `ds_cnn_tb.cpp` under **Test Bench**. This file tests the CNN implementation using the test dataset.
+
 
