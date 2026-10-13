@@ -139,4 +139,11 @@ The run folder should contain the following subfolders:
 
 Review the plots and reports to assess the model’s performance. Keep the `weights_cstyle_folded` folder for the Vitis HLS implementation.
 
+### 8. Create a new Vitis HLS project
+
+Open **Vitis HLS** and select **Create New Project**.
+
+Enter a project name and choose a location for the project, then click **Next** to continue through the project wizard.
+
+
 
