@@ -18,3 +18,7 @@ This lab presents a practical workflow for training and deploying a custom-desig
 - PYNQ-Z2 FPGA board with Zynq-7020 (`xc7z020clg400-1`)
 - USB Type-A to Micro-USB Type-B cable for FPGA programming, UART communication, and power
 - Course datasets and source files from the course GitHub repository
+
+## Disclaimer
+
+The instructions were prepared using Vitis, Vitis HLS, and Vivado **2020.2**. Newer versions may have different menus, project workflows, or settings. Check your installed versions before following the instructions.
