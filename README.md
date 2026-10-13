@@ -345,4 +345,22 @@ If desired, augment the test images using the same data augmentation script used
 
 Save the changes before running the script.
 
+### 32. Configure the serial port and run the test script
+
+Identify the `/dev/ttyUSB*` port connected to your board and set it as `SERIAL_PORT` in `send_images_uart.py`. For example:
+
+```python
+SERIAL_PORT = "/dev/ttyUSB1"
+BAUD_RATE = 4000000
+```
+
+The UART baud rate is **4,000,000 baud (4 Mbaud)** and must match `UART_BAUD` in the Vitis C application.
+
+Ensure no other serial terminal is using the selected port. With the `cnn_env` virtual environment activated, run:
+
+```bash
+python send_images_uart.py
+```
+
+Observe the predictions, inference times, accuracy, and final confusion matrix printed in the terminal.
 
