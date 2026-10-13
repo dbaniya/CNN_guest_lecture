@@ -158,6 +158,8 @@ During the Vitis HLS project setup, go to the Solution Configuration window and 
 
 `xc7z020clg400-1`
 
+This is the Zynq-7020 device used on the PYNQ-Z2 board.
+
 ### 11. Add the CNN source files
 
 Download the following files from the course GitHub repository and save them together in one folder on your computer:
@@ -170,4 +172,3 @@ Open your Vitis HLS project and add all three files under **Source**.
 
 
 
-This is the Zynq-7020 device used on the PYNQ-Z2 board.
