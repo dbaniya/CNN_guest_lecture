@@ -252,6 +252,21 @@ From the **Flow Navigator**, run the following steps in order:
 
 Wait for each step to complete successfully before proceeding to the next.
 
+### 22. Configure an external GPIO for inference latency measurement (optional)
+
+If you make the GPIO interface external to measure inference latency, add appropriate pin constraints to your Vivado `.xdc` file.
+
+**The following is only an example.** Tailor the package pin and I/O standard to the **PYNQ-Z2 board** and your intended connection; do not assume that `N14` is the correct pin. Ensure the port name matches your HDL wrapper.
+
+```tcl
+set_property PACKAGE_PIN N14    [get_ports {gpio_rtl_tri_io[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {gpio_rtl_tri_io[0]}]
+```
+
+Drive the GPIO high before starting inference and low after inference completes. Measure the pulse duration using an oscilloscope or logic analyzer to determine inference latency.
+
+Apply the constraints before running implementation and generating the bitstream.
+
 
 
 
