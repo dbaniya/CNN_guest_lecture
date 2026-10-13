@@ -193,3 +193,15 @@ Keep the folder name `weights_cstyle_folded` unchanged and preserve all files in
 Download `dwpw_cnn_testing_data_aug_txt` from the course GitHub repository. If compressed, extract it into the same folder as the HLS source files, test bench, and `weights_cstyle_folded` folder.
 
 Keep the name `dwpw_cnn_testing_data_aug_txt` unchanged so the test bench can locate the test data.
+
+### 15. Run C synthesis and inspect the report
+
+In Vitis HLS, select **Run C Synthesis**. Once synthesis finishes, open the **Synthesis Summary Report** and examine:
+
+- **Performance estimates:** estimated clock period, latency, and initiation interval
+- **Resource estimates:** BRAM, DSP, flip-flop (FF), and lookup table (LUT) usage
+
+These estimates indicate the accelerator’s expected execution time and FPGA resource requirements.
+
+
+
