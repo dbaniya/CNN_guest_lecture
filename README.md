@@ -286,5 +286,18 @@ find ~ -type f -name "*.xsa"
 The output lists the full paths of matching files. Note the path of the `.xsa` file exported from your Vivado project, as you will select it when creating the platform project in Vitis.
 
 
+### 25. Create a platform project in Vitis
+
+Open **Vitis** and select **Create Platform Project**.
+
+1. Enter a project name and click **Next**.
+2. Select **Create a new platform from hardware (XSA)**.
+3. Browse to and select the `.xsa` file exported from Vivado.
+4. Set the operating system to **standalone**.
+5. Select **ps7_cortexa9_0** as the processor.
+6. Leave **Generate boot components** checked.
+7. Click **Finish** to create the platform project.
+
+
 
 
