@@ -239,8 +239,22 @@ Create a new project in **Vivado** and build the design shown in the course slid
 
 In Vivado’s **Sources** window, expand **Design Sources**, right-click the appropriate top-level module for your design, and select **Set as Top**. For a block design, select its generated **HDL wrapper** as the top module.
 
+### 21. Configure a GPIO for inference latency measurement (optional)
 
-### 21. Validate the design and generate the bitstream
+If you intend to measure inference latency using an oscilloscope or logic analyzer, make the GPIO interface external and add appropriate pin constraints to your Vivado `.xdc` file. **If you do not use this GPIO, do not make the interface external.**
+
+**The following constraints are only an example.** Tailor the package pin and I/O standard to the **PYNQ-Z2 board** and your intended connection. Ensure the port name matches your HDL wrapper.
+
+```tcl
+set_property PACKAGE_PIN N14    [get_ports {gpio_rtl_tri_io[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {gpio_rtl_tri_io[0]}]
+```
+
+Drive the GPIO high before starting inference and low after inference completes. Measure the pulse duration to determine inference latency.
+
+Apply the constraints before running implementation and generating the bitstream.
+
+### 22. Validate the design and generate the bitstream
 
 In Vivado, open the block design and select **Validate Design**. Resolve any reported errors before continuing.
 
@@ -252,20 +266,7 @@ From the **Flow Navigator**, run the following steps in order:
 
 Wait for each step to complete successfully before proceeding to the next.
 
-### 22. Configure an external GPIO for inference latency measurement (optional)
 
-If you make the GPIO interface external to measure inference latency, add appropriate pin constraints to your Vivado `.xdc` file.
-
-**The following is only an example.** Tailor the package pin and I/O standard to the **PYNQ-Z2 board** and your intended connection; do not assume that `N14` is the correct pin. Ensure the port name matches your HDL wrapper.
-
-```tcl
-set_property PACKAGE_PIN N14    [get_ports {gpio_rtl_tri_io[0]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {gpio_rtl_tri_io[0]}]
-```
-
-Drive the GPIO high before starting inference and low after inference completes. Measure the pulse duration using an oscilloscope or logic analyzer to determine inference latency.
-
-Apply the constraints before running implementation and generating the bitstream.
 
 
 
