@@ -125,3 +125,18 @@ python train_cnn.py
 ```
 
 Wait for training and evaluation to complete.
+
+### 7. Inspect the training outputs
+
+After training finishes, open the run folder created under the path specified by `RUNS_DIR` in the training script.
+
+The run folder should contain the following subfolders:
+
+- `models`: saved trained models
+- `plots`: training curves and confusion matrices
+- `reports`: evaluation results and classification reports
+- `weights_cstyle_folded`: exported C-style weights with batch normalization folded into the convolution parameters
+
+Review the plots and reports to assess the model’s performance. Keep the `weights_cstyle_folded` folder for the Vitis HLS implementation.
+
+
