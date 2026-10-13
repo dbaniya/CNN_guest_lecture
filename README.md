@@ -22,3 +22,57 @@ This lab presents a practical workflow for training and deploying a custom-desig
 ## Disclaimer
 
 The instructions were prepared using Vitis, Vitis HLS, and Vivado **2020.2**. Newer versions may have different menus, project workflows, or settings. Adjust the steps as needed for your installed software versions.
+
+## Instructions
+
+### 1. Create and activate a Python virtual environment
+
+Open a terminal in your project folder and create a virtual environment named `cnn_env` using Python 3.12:
+
+```bash
+/usr/bin/python3.12 -m venv cnn_env
+```
+
+Activate the virtual environment:
+
+```bash
+source cnn_env/bin/activate
+```
+
+Verify the Python version:
+
+```bash
+python --version
+```
+
+The output should show `Python 3.12.x`. Keep the virtual environment activated when installing packages or running the Python scripts.
+
+### 2. Install the required Python packages
+
+With the `cnn_env` virtual environment activated, upgrade `pip`:
+
+```bash
+python -m pip install --upgrade pip
+```
+
+Install the required packages:
+
+```bash
+python -m pip install tensorflow numpy opencv-python matplotlib scikit-learn albumentations pyserial
+```
+
+The packages are used for:
+
+- **TensorFlow:** building, training, and running the CNN
+- **NumPy:** numerical arrays and operations
+- **OpenCV (`opencv-python`):** image loading and preprocessing
+- **Matplotlib:** plotting training curves and confusion matrices
+- **scikit-learn:** evaluating classification performance
+- **Albumentations:** augmenting the image datasets
+- **pyserial:** sending test images to the FPGA and receiving predictions over UART
+
+Verify the installed packages:
+
+```bash
+python -m pip list
+```
