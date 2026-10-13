@@ -322,3 +322,11 @@ Download the provided Hello World C source file from the course GitHub repositor
 
 In Vitis, open the starter application’s `helloworld.c` file under **src**. Replace its contents with the code from the downloaded file, then save the changes.
 
+
+### 30. Build and run the application on the FPGA board
+
+Connect the **PYNQ-Z2 board** to your computer using the USB Type-A to Micro-USB Type-B cable and power on the board.
+
+In Vitis, build the application and resolve any build errors. Once the build completes successfully, select **Run → Run As → Launch on Hardware** to program the FPGA and run the application.
+
+
