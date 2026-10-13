@@ -106,4 +106,22 @@ Replace `/absolute/path/to/new_training_data` with the actual dataset path. `OUT
 
 Save and run the script with the `cnn_env` virtual environment activated. After it finishes, confirm that `new_training_data_aug` contains the augmented images.
 
+### 6. Train the CNN
 
+Download `train_cnn.py` from the course GitHub repository and save it in your project folder.
+
+Open the script and set `ROOT` to the absolute path of the augmented dataset folder:
+
+```python
+ROOT = Path("/absolute/path/to/new_training_data_aug")
+```
+
+Replace `/absolute/path/to/new_training_data_aug` with the actual folder path, then save the script.
+
+With the `cnn_env` virtual environment activated, run:
+
+```bash
+python train_cnn.py
+```
+
+Wait for training and evaluation to complete.
