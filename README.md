@@ -329,4 +329,20 @@ Connect the **PYNQ-Z2 board** to your computer using the USB Type-A to Micro-USB
 
 In Vitis, build the application and resolve any build errors. Once the build completes successfully, select **Run → Run As → Launch on Hardware** to program the FPGA and run the application.
 
+### 31. Prepare the test images and UART script
+
+After programming the FPGA, download `New_Testing_Data` and `send_images_uart.py` from the course GitHub repository. Save the dataset folder and Python script together in one folder.
+
+Open `send_images_uart.py` and set `ROOT` to the absolute path of the dataset directory containing the four class folders:
+
+```python
+ROOT = Path("/absolute/path/to/New_Testing_Data")
+```
+
+Replace `/absolute/path/to/New_Testing_Data` with the actual dataset path.
+
+If desired, augment the test images using the same data augmentation script used earlier for the training and validation datasets. In that case, set `ROOT` in `send_images_uart.py` to the augmented test dataset folder.
+
+Save the changes before running the script.
+
 
