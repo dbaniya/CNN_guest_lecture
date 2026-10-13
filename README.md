@@ -240,6 +240,18 @@ Create a new project in **Vivado** and build the design shown in the course slid
 In Vivado’s **Sources** window, expand **Design Sources**, right-click the appropriate top-level module for your design, and select **Set as Top**. For a block design, select its generated **HDL wrapper** as the top module.
 
 
+### 21. Validate the design and generate the bitstream
+
+In Vivado, open the block design and select **Validate Design**. Resolve any reported errors before continuing.
+
+From the **Flow Navigator**, run the following steps in order:
+
+1. **Run Synthesis**
+2. **Run Implementation**
+3. **Generate Bitstream**
+
+Wait for each step to complete successfully before proceeding to the next.
+
 
 
 
