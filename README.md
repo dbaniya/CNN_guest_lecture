@@ -146,4 +146,8 @@ Open **Vitis HLS** and select **Create New Project**.
 Enter a project name and choose a location for the project, then click **Next** to continue through the project wizard.
 
 
+### 9. Set the top-level function
 
+In the Vitis HLS project settings, set **Top Function** to `ds_cnn`.
+
+This name must exactly match the top-level function in the provided C++ source code. Vitis HLS uses this function as the entry point for generating the CNN hardware accelerator.
