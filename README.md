@@ -316,3 +316,9 @@ On the **Templates** screen, select **Hello World** and click **Finish**.
 This creates a starter bare-metal C application, which you will modify in the next step to control the CNN accelerator.
 
 
+### 29. Replace the starter application code
+
+Download the provided Hello World C source file from the course GitHub repository.
+
+In Vitis, open the starter application’s `helloworld.c` file under **src**. Replace its contents with the code from the downloaded file, then save the changes.
+
