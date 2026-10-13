@@ -177,4 +177,15 @@ Download `ds_cnn_tb.cpp` from the course GitHub repository and save it in the sa
 
 In your Vitis HLS project, add `ds_cnn_tb.cpp` under **Test Bench**. This file tests the CNN implementation using the test dataset.
 
+### 13. Copy the exported model weights
+
+Copy the `weights_cstyle_folded` folder generated during Python training into the folder containing:
+
+- `ds_cnn.cpp`
+- `ds_cnn_weights.h`
+- `ds_cnn_weights_data.h`
+- `ds_cnn_tb.cpp`
+
+Keep the folder name `weights_cstyle_folded` unchanged and preserve all files inside it so the HLS source code can locate the exported weights.
+
 
