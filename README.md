@@ -237,9 +237,7 @@ Create a new project in **Vivado** and build the design shown in the course slid
 
 - ### 20. Set the top module in Vivado
 
-In Vivado’s **Sources** window, expand **Design Sources**, right-click the appropriate top-level module for your design, and select **Set as Top**.
-
-For a block design, select its generated **HDL wrapper** as the top module.
+In Vivado’s **Sources** window, expand **Design Sources**, right-click the appropriate top-level module for your design, and select **Set as Top**. For a block design, select its generated **HDL wrapper** as the top module.
 
 
 
