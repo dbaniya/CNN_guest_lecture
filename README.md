@@ -305,5 +305,8 @@ After creating and generating the platform project, select **File → New → Ap
 
 In the wizard, choose **Select a platform from repository**, select the platform you created in the previous step, and click **Next**.
 
+### 27. Select the application domain
+
+On the **Domain** screen, select the existing **standalone_domain** and click **Next**.
 
 
