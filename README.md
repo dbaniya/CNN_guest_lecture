@@ -266,6 +266,13 @@ From the **Flow Navigator**, run the following steps in order:
 
 Wait for each step to complete successfully before proceeding to the next.
 
+### 23. Export the hardware platform
+
+Once the bitstream has been generated successfully, select **File → Export → Export Hardware** in Vivado.
+
+In the export wizard, select **Include bitstream**, choose the output location, then click **Next** and **Finish**.
+
+This creates an `.xsa` hardware platform file containing the hardware design and bitstream for use in Vitis.
 
 
 
