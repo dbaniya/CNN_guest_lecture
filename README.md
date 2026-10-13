@@ -21,4 +21,4 @@ This lab presents a practical workflow for training and deploying a custom-desig
 
 ## Disclaimer
 
-The instructions were prepared using Vitis, Vitis HLS, and Vivado **2020.2**. Newer versions may have different menus, project workflows, or settings. Check your installed versions before following the instructions.
+The instructions were prepared using Vitis, Vitis HLS, and Vivado **2020.2**. Newer versions may have different menus, project workflows, or settings. Adjust the steps as needed for your installed software versions.
