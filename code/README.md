@@ -41,3 +41,13 @@ It supplies parameters for the standard convolution, depthwise convolution, poin
 Keep `weights_cstyle_folded` alongside this header and preserve the exported filenames. The parameters are included at compile time for simulation and hardware synthesis.
 
 
+### Bare-Metal FPGA Application (**helloworld.c**)
+
+This application runs on the Zynq ARM processor and controls the CNN accelerator. It receives **60 × 80 images as 16-bit Q8.8 values** over UART at **4,000,000 baud (4 Mbaud)**. Each image contains **9,600 payload bytes** (60 × 80 × 2).
+
+The application stores the image in DDR memory, flushes the data cache, and starts the accelerator through its **AXI-Lite control interface**. After inference completes, it reads the predicted class and four logits.
+
+Execution time is measured using the processor timer, while an **AXI GPIO pulse** supports oscilloscope or logic analyzer measurements. The measured interval includes software control overhead and excludes UART image transfer.
+
+Results are returned to the computer in a **15-byte binary reply** containing framing markers, the prediction, elapsed time in microseconds, and four fixed-point logits. Ensure the UART baud rate, accelerator register offsets, and device identifiers match your hardware design and Python sender script.
+
