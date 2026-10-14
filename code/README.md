@@ -62,3 +62,17 @@ It prints per-image results, overall accuracy, and a confusion matrix (**rows = 
 
 Before running, update `ROOT` and `SERIAL_PORT`, and ensure `BAUD_RATE` matches the Vitis application. The dataset must contain the folders `Full Cable`, `Left End`, `Right End`, and `No Cable`. Close any other serial terminal using the selected port.
 
+
+### CNN Training and Weight Export (**train_cnn.py**)
+
+This script trains a lightweight CNN using **TensorFlow’s Keras API** to classify Full Cable, Left End, Right End, and No Cable images. It loads images in grayscale, resizes them to **60 × 80**, applies normalization `(x / 255 − 0.5) / 0.25`, and creates a stratified **70% training / 30% validation split**.
+
+The network combines standard, depthwise, and pointwise convolution with batch normalization, ReLU, pooling, and a four-class softmax output. Training uses **Adam**, early stopping, and learning-rate reduction.
+
+Outputs include saved models, training history, loss and accuracy plots, validation confusion matrices, and a classification report. The script also exports **C-style weights and biases**, folding batch normalization into the first three convolution layers for Vitis HLS deployment.
+
+Before running, update `ROOT` and `run_dir` to your dataset and output paths. Adjust the training settings as needed; the provided script currently uses `EPOCHS = 2`.
+
+
+
+
