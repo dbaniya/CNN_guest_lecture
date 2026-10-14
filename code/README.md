@@ -51,3 +51,14 @@ Execution time is measured using the processor timer, while an **AXI GPIO pulse*
 
 Results are returned to the computer in a **15-byte binary reply** containing framing markers, the prediction, elapsed time in microseconds, and four fixed-point logits. Ensure the UART baud rate, accelerator register offsets, and device identifiers match your hardware design and Python sender script.
 
+
+### FPGA Image Testing over UART (**send_images_uart.py**)
+
+This script sends test images from the computer to the FPGA over UART at **4,000,000 baud (4 Mbaud)**. It converts images to grayscale, resizes them to **60 × 80**, applies the training normalization, and encodes the pixels as **16-bit Q8.8 values**.
+
+Each image is transmitted with framing markers and a payload length, followed by **9,600 image bytes**. The script reads the FPGA’s **15-byte reply**, containing the predicted class, measured inference time, and four fixed-point logits.
+
+It prints per-image results, overall accuracy, and a confusion matrix (**rows = true labels, columns = predictions**). By default, it tests up to **1,000 images per class**.
+
+Before running, update `ROOT` and `SERIAL_PORT`, and ensure `BAUD_RATE` matches the Vitis application. The dataset must contain the folders `Full Cable`, `Left End`, `Right End`, and `No Cable`. Close any other serial terminal using the selected port.
+
