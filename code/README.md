@@ -1,4 +1,4 @@
-### Data Augmentation
+### Data Augmentation (**augment_data.py**)
 
 This script generates **20 augmented versions of each image** across four classes: Full Cable, Left End, Right End, and No Cable. With `SAVE_ORIGINALS = True`, each input produces **21 output images**, including the original.
 
