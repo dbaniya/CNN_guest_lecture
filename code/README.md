@@ -31,3 +31,13 @@ The `weights` namespace declares the weight and bias arrays for the standard con
 
 An include guard prevents repeated inclusion of the header.
 
+
+### CNN Weight Data (**ds_cnn_weights_data.h**)
+
+This header defines the CNN’s weight and bias arrays by including the C-style parameter files exported during Python training from `weights_cstyle_folded`.
+
+It supplies parameters for the standard convolution, depthwise convolution, pointwise convolution, and classifier, using the fixed-point type and array dimensions defined in `ds_cnn_weights.h`. Batch normalization is folded into the parameters of the first three layers.
+
+Keep `weights_cstyle_folded` alongside this header and preserve the exported filenames. The parameters are included at compile time for simulation and hardware synthesis.
+
+
