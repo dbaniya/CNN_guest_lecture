@@ -23,3 +23,11 @@ The test bench compares predictions with the labels for **Full Cable (0), Left E
 
 Before running, set `BASE_DIR` to the test dataset path. By default, `SAMPLES_PER_CLASS = 1` selects one random image per class; set it to `0` to test all images. Set `VERBOSE_PER_FILE = false` to disable per-image output.
 
+### CNN Definitions and Weight Declarations (**ds_cnn_weights.h**)
+
+This header defines the CNN’s **16-bit fixed-point data type** (`ap_fixed<16,8>`) and network dimensions: a **60 × 80 input**, **16 convolution channels**, **8 pointwise output channels**, and **4 classes**. It also specifies the spatial dimensions after max pooling (**30 × 40**) and average pooling (**5 × 5**).
+
+The `weights` namespace declares the weight and bias arrays for the standard convolution, depthwise convolution, pointwise convolution, and classifier. The actual parameter values are supplied separately through `ds_cnn_weights_data.h`.
+
+An include guard prevents repeated inclusion of the header.
+
