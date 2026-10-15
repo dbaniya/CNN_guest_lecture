@@ -5,6 +5,10 @@ This lab presents a practical workflow for training and deploying a custom-desig
 
 ## Requirements
 
+- One of the following options for the Python workflow:
+  - Ubuntu 24.04 LTS installed directly on your computer; or
+  - Ubuntu 24.04 LTS running through Windows Subsystem for Linux 2 (WSL 2); or
+  - Python installed directly on Windows (requires Windows-specific commands to create and activate the virtual environment; package installation commands remain the same).
 - Python 3.12 with `venv` and `pip`
 - A Python virtual environment with the following packages installed:
   - TensorFlow (`tensorflow==2.21.0`)
@@ -17,16 +21,31 @@ This lab presents a practical workflow for training and deploying a custom-desig
   - h5py (`h5py==3.14.0`)
 - AMD/Xilinx development tools: Vitis, Vitis HLS, and Vivado (course instructions use **version 2020.2**)
 - PYNQ-Z2 FPGA board with Zynq-7020 (`xc7z020clg400-1`)
-- USB Type-A to Micro-USB Type-B cable for FPGA programming, UART communication, and power
+- USB Type-A to Micro-USB Type-B data cable for FPGA programming, UART communication, and power
 - Course datasets and source files from the course GitHub repository
+
+**Note:** The Python installation instructions below are provided for Linux (Ubuntu), including Ubuntu running under WSL 2. For native Windows, use Windows-specific commands to install Python and create and activate the virtual environment. The `python -m pip` commands remain the same once the environment is activated.
 
 ## Disclaimer
 
-The instructions were prepared using Vitis, Vitis HLS, and Vivado **2020.2**. Newer versions may have different menus, project workflows, or settings. Adjust the steps as needed for your installed software versions.
+The FPGA deployment instructions were prepared using Vitis, Vitis HLS, and Vivado **2020.2**. Newer versions may have different menus, project workflows, or settings. Adjust the steps as needed for your installed software versions.
+
+Installation of the FPGA development tools and access to the FPGA board require separate setup.
 
 ## Instructions
 
-### 1. Create and activate a Python virtual environment
+### 1. Install Python prerequisites
+
+Open an Ubuntu terminal. If you are using WSL 2 on Windows, open your Ubuntu terminal.
+
+Install Python 3.12, `venv`, and `pip`:
+
+```bash
+sudo apt update
+sudo apt install python3.12 python3.12-venv python3-pip
+```
+
+### 2. Create and activate a Python virtual environment
 
 Open a terminal in your project folder and create a virtual environment named `cnn_env` using Python 3.12:
 
@@ -48,7 +67,7 @@ python --version
 
 The output should show `Python 3.12.x`. Keep the virtual environment activated when installing packages or running the Python scripts.
 
-### 2. Install the required Python packages
+### 3. Install the required Python packages
 
 With the `cnn_env` virtual environment activated, upgrade `pip`:
 
@@ -56,10 +75,10 @@ With the `cnn_env` virtual environment activated, upgrade `pip`:
 python -m pip install --upgrade pip
 ```
 
-Install the required packages:
+Install the required packages using the specified versions:
 
 ```bash
-python -m pip install tensorflow numpy opencv-python matplotlib scikit-learn albumentations pyserial
+python -m pip install tensorflow==2.21.0 numpy==2.5.4 opencv-python==5.0.0.93 matplotlib==3.11.2 scikit-learn==1.9.1 albumentations==2.0.8 pyserial==3.5 h5py==3.14.0
 ```
 
 The packages are used for:
@@ -71,11 +90,20 @@ The packages are used for:
 - **scikit-learn:** evaluating classification performance
 - **Albumentations:** augmenting the image datasets
 - **pyserial:** sending test images to the FPGA and receiving predictions over UART
+- **h5py:** saving and loading CNN models and weights in HDF5 (`.h5`) format
 
-Verify the installed packages:
+### 4. Verify the installed packages
+
+List the installed packages and their versions:
 
 ```bash
 python -m pip list
+```
+
+Check for dependency conflicts:
+
+```bash
+python -m pip check
 ```
 
 ### 3. Install Vitis, Vitis HLS, and Vivado
