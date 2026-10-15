@@ -116,32 +116,39 @@ Complete the installation. **Version 2020.2 is preferred** because it matches th
 
 **Version note:** You may use a newer release, but menus, tool names, and project workflows may differ.
 
-
-
 ### 6. Clone the course repository
 
-Clone the course repository once to obtain the datasets, source code, and presentation:
+Clone the course repository once to obtain the datasets, source code, and presentation.
+
+For Ubuntu, including Ubuntu running under WSL 2, install Git:
 
 ```bash
 sudo apt update
 sudo apt install git
+```
+
+For native Windows, install [Git for Windows](https://git-scm.com/download/win), then open Git Bash or PowerShell.
+
+From your project folder, run:
+
+```bash
 git clone https://github.com/dbaniya/CNN_guest_lecture.git
 cd CNN_guest_lecture
 ```
 
-Use this cloned repository as your project folder throughout the lab. The files referenced in the following steps are available inside this folder, so you do not need to download them individually.
+The files referenced in the following steps are available inside this cloned repository, so you do not need to download them individually.
 
+Keep using the `cnn_env` virtual environment created in Step 2 when running Python scripts.
 
+### 7. Locate the training dataset
 
-### 7. Download the training dataset
-
-Download `new_training_data` from the dataset link provided in the course materials. If the download is compressed, extract it into your project folder.
+Locate `new_training_data` in your cloned repository. If the dataset is compressed, extract it into your project folder.
 
 Note the location of the `new_training_data` folder, as you will use this path in the data augmentation script.
 
 ### 8. Augment the training dataset (optional)
 
-Open the data augmentation script and set `DATA_ROOT` to the absolute path of your `new_training_data` folder:
+Open the data augmentation script in your cloned repository and set `DATA_ROOT` to the absolute path of your `new_training_data` folder:
 
 ```python
 DATA_ROOT = Path("/absolute/path/to/new_training_data")
@@ -154,9 +161,9 @@ Save and run the script with the `cnn_env` virtual environment activated. After 
 
 ### 9. Train the CNN
 
-Download `train_cnn.py` from the course GitHub repository and save it in your project folder.
+Open `train_cnn.py` in your cloned repository.
 
-Open the script and set `ROOT` to the absolute path of the dataset folder. If you are using the original dataset, use:
+Set `ROOT` to the absolute path of the dataset folder. If you are using the original dataset, use:
 
 ```python
 ROOT = Path("/absolute/path/to/new_training_data")
@@ -170,7 +177,7 @@ ROOT = Path("/absolute/path/to/new_training_data_aug")
 
 Replace the example path with the actual folder path, then save the script.
 
-With the `cnn_env` virtual environment activated, run:
+Open a terminal in the folder containing the script. With the `cnn_env` virtual environment activated, run:
 
 ```bash
 python train_cnn.py
@@ -187,9 +194,9 @@ Actual times depend on your hardware. Loading the dataset, evaluation, and savin
 
 ### 10. Inspect the training outputs
 
-After training finishes, open the run folder created under the path specified by `RUNS_DIR` in the training script.
+After training finishes, open the output folder specified by `run_dir` in the training script.
 
-The run folder should contain the following subfolders:
+The output folder should contain the following subfolders:
 
 - `models`: saved trained models
 - `plots`: training curves and confusion matrices
@@ -203,7 +210,6 @@ Review the plots and reports to assess the model’s performance. Keep the `weig
 Open **Vitis HLS** and select **Create New Project**.
 
 Enter a project name and choose a location for the project, then click **Next** to continue through the project wizard.
-
 
 ### 12. Set the top-level function
 
@@ -221,7 +227,7 @@ This is the Zynq-7020 device used on the PYNQ-Z2 board.
 
 ### 14. Add the CNN source files
 
-Download the following files from the course GitHub repository and save them together in one folder on your computer:
+Locate the following files in your cloned repository and keep them together in one folder:
 
 - `ds_cnn.cpp`
 - `ds_cnn_weights.h`
@@ -229,10 +235,9 @@ Download the following files from the course GitHub repository and save them tog
 
 Open your Vitis HLS project and add all three files under **Source**.
 
-
 ### 15. Add the test bench file
 
-Download `ds_cnn_tb.cpp` from the course GitHub repository and save it in the same folder as the three source files.
+Locate `ds_cnn_tb.cpp` in your cloned repository and ensure it is in the same folder as the three source files.
 
 In your Vitis HLS project, add `ds_cnn_tb.cpp` under **Test Bench**. This file tests the CNN implementation using the test dataset.
 
@@ -247,9 +252,9 @@ Copy the `weights_cstyle_folded` folder generated during Python training into th
 
 Keep the folder name `weights_cstyle_folded` unchanged and preserve all files inside it so the HLS source code can locate the exported weights.
 
-### 17. Download the HLS test dataset
+### 17. Prepare the HLS test dataset
 
-Download `dwpw_cnn_testing_data_aug_txt` from the course GitHub repository. If compressed, extract it into the same folder as the HLS source files, test bench, and `weights_cstyle_folded` folder.
+Locate `dwpw_cnn_testing_data_aug_txt` in your cloned repository. Copy it—or extract it if compressed—into the same folder as the HLS source files, test bench, and `weights_cstyle_folded` folder. If it is already there, no copy is needed.
 
 Keep the name `dwpw_cnn_testing_data_aug_txt` unchanged so the test bench can locate the test data.
 
@@ -333,17 +338,15 @@ In the export wizard, select **Include bitstream**, choose the output location, 
 
 This creates an `.xsa` hardware platform file containing the hardware design and bitstream for use in Vitis.
 
-
 ### 27. Locate the exported XSA file
 
-Open a terminal and run the following command to search your home folder and its subfolders for `.xsa` files:
+Open an Ubuntu terminal and run the following command to search your home folder and its subfolders for `.xsa` files:
 
 ```bash
 find ~ -type f -name "*.xsa"
 ```
 
 The output lists the full paths of matching files. Note the path of the `.xsa` file exported from your Vivado project, as you will select it when creating the platform project in Vitis.
-
 
 ### 28. Create a platform project in Vitis
 
@@ -356,7 +359,6 @@ Open **Vitis** and select **Create Platform Project**.
 5. Select **ps7_cortexa9_0** as the processor.
 6. Leave **Generate boot components** checked.
 7. Click **Finish** to create the platform project.
-
 
 ### 29. Create an application project in Vitis
 
@@ -374,13 +376,11 @@ On the **Templates** screen, select **Hello World** and click **Finish**.
 
 This creates a starter bare-metal C application, which you will modify in the next step to control the CNN accelerator.
 
-
 ### 32. Replace the starter application code
 
-Download the provided Hello World C source file from the course GitHub repository.
+Open the provided Hello World C source file in your cloned repository.
 
-In Vitis, open the starter application’s `helloworld.c` file under **src**. Replace its contents with the code from the downloaded file, then save the changes.
-
+In Vitis, open the starter application’s `helloworld.c` file under **src**. Replace its contents with the code from the provided source file, then save the changes.
 
 ### 33. Build and run the application on the FPGA board
 
@@ -390,7 +390,7 @@ In Vitis, build the application and resolve any build errors. Once the build com
 
 ### 34. Prepare the test images and UART script
 
-After programming the FPGA, download `New_Testing_Data` and `send_images_uart.py` from the course GitHub repository. Save the dataset folder and Python script together in one folder.
+After programming the FPGA, locate `New_Testing_Data` and `send_images_uart.py` in your cloned repository. Keep the dataset folder and Python script together in one folder.
 
 Open `send_images_uart.py` and set `ROOT` to the absolute path of the dataset directory containing the four class folders:
 
@@ -415,11 +415,10 @@ BAUD_RATE = 4000000
 
 The UART baud rate is **4,000,000 baud (4 Mbaud)** and must match `UART_BAUD` in the Vitis C application.
 
-Ensure no other serial terminal is using the selected port. With the `cnn_env` virtual environment activated, run:
+Ensure no other serial terminal is using the selected port. Open a terminal in the folder containing the script. With the `cnn_env` virtual environment activated, run:
 
 ```bash
 python send_images_uart.py
 ```
 
 Observe the predictions, inference times, accuracy, and final confusion matrix printed in the terminal.
-
