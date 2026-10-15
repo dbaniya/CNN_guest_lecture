@@ -6,15 +6,16 @@ This lab presents a practical workflow for training and deploying a custom-desig
 ## Requirements
 
 - Python 3.12 with `venv` and `pip`
-- A Python virtual environment with the following packages installed:
-  - TensorFlow
-  - NumPy
-  - OpenCV (`opencv-python`)
-  - Matplotlib
-  - scikit-learn
-  - Albumentations
-  - pyserial
-- AMD/Xilinx development tools: Vitis, Vitis HLS, and Vivado (**version 2020.2 preferred**, as used in the course instructions)
+- A Python virtual environment with the following packages installed (versions from the course environment):
+  - TensorFlow (`tensorflow==2.21.0`)
+  - NumPy (`numpy==2.5.4`)
+  - OpenCV (`opencv-python==5.0.0.93`)
+  - Matplotlib (`matplotlib==3.11.2`)
+  - scikit-learn (`scikit-learn==1.9.1`)
+  - Albumentations (`albumentations==2.0.8`)
+  - pyserial (`pyserial==3.5`)
+  - h5py (`h5py==3.14.0`)
+- AMD/Xilinx development tools: Vitis, Vitis HLS, and Vivado (the course instructions use **version 2020.2**)
 - PYNQ-Z2 FPGA board with Zynq-7020 (`xc7z020clg400-1`)
 - USB Type-A to Micro-USB Type-B cable for FPGA programming, UART communication, and power
 - Course datasets and source files from the course GitHub repository
