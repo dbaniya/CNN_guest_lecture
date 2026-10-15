@@ -292,11 +292,14 @@ Confirm that `export.zip` is present. This ZIP file contains the packaged CNN IP
 
 ### 22. Create the Vivado project and block design
 
-Create a new project in **Vivado** and build the design shown in the course slides.
+Create a new project in **Vivado** and build the design shown below.
+
+![Vivado block design](vivado_block_diagram.png)
 
 - Add the **Zynq7 Processing System** first, then run **Block Automation** to apply the board settings.
 - Open **Tools → Settings → IP → Repository**, click **Add Repository**, and select the `impl/ip` folder inside your Vitis HLS solution directory.
-- Confirm that the custom CNN IP appears in the **IP Catalog**, then add it and the remaining IP blocks. Connect them as shown in the slides.
+- Confirm that the custom CNN IP appears in the **IP Catalog**, then add it and the remaining IP blocks. Connect them as shown in the figure above.
+- The `gpio_rtl` port highlighted in red is an external GPIO connection. If you leave this GPIO interface internal instead of making it external, no XDC pin constraints are needed for it. An XDC file may still be required for other external ports or timing constraints.
 - Open the **Address Editor** and confirm that the CNN IP’s AXI control interface has an assigned address. If it appears under **Unassigned**, click **Auto Assign Address**.
 
 ### 23. Set the top module in Vivado
