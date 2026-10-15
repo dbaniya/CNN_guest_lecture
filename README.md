@@ -6,7 +6,7 @@ This lab presents a practical workflow for training and deploying a custom-desig
 ## Requirements
 
 - Python 3.12 with `venv` and `pip`
-- A Python virtual environment with the following packages installed (versions from the course environment):
+- A Python virtual environment with the following packages installed:
   - TensorFlow (`tensorflow==2.21.0`)
   - NumPy (`numpy==2.5.4`)
   - OpenCV (`opencv-python==5.0.0.93`)
