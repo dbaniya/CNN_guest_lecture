@@ -15,7 +15,7 @@ This lab presents a practical workflow for training and deploying a custom-desig
   - Albumentations (`albumentations==2.0.8`)
   - pyserial (`pyserial==3.5`)
   - h5py (`h5py==3.14.0`)
-- AMD/Xilinx development tools: Vitis, Vitis HLS, and Vivado (the course instructions use **version 2020.2**)
+- AMD/Xilinx development tools: Vitis, Vitis HLS, and Vivado (course instructions use **version 2020.2**)
 - PYNQ-Z2 FPGA board with Zynq-7020 (`xc7z020clg400-1`)
 - USB Type-A to Micro-USB Type-B cable for FPGA programming, UART communication, and power
 - Course datasets and source files from the course GitHub repository
