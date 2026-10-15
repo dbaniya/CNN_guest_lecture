@@ -106,7 +106,7 @@ Check for dependency conflicts:
 python -m pip check
 ```
 
-### 3. Install Vitis, Vitis HLS, and Vivado
+### 5. Install Vitis, Vitis HLS, and Vivado
 
 Download the **Unified Installer for version 2020.2** from the [AMD download page](https://www.amd.com/en/support/downloads/adaptive-socs-and-fpgas/development-tools/2020-2.html).
 
@@ -116,13 +116,13 @@ Complete the installation. **Version 2020.2 is preferred** because it matches th
 
 **Version note:** You may use a newer release, but menus, tool names, and project workflows may differ.
 
-### 4. Download the training dataset
+### 6. Download the training dataset
 
 Download `new_training_data` from the dataset link provided in the course materials. If the download is compressed, extract it into your project folder.
 
 Note the location of the `new_training_data` folder, as you will use this path in the data augmentation script.
 
-### 5. Augment the training dataset (optional)
+### 7. Augment the training dataset (optional)
 
 Open the data augmentation script and set `DATA_ROOT` to the absolute path of your `new_training_data` folder:
 
@@ -135,7 +135,7 @@ Replace `/absolute/path/to/new_training_data` with the actual dataset path. `OUT
 
 Save and run the script with the `cnn_env` virtual environment activated. After it finishes, confirm that `new_training_data_aug` contains the augmented images.
 
-### 6. Train the CNN
+### 8. Train the CNN
 
 Download `train_cnn.py` from the course GitHub repository and save it in your project folder.
 
@@ -161,7 +161,7 @@ python train_cnn.py
 
 Wait for training and evaluation to complete.
 
-### 7. Inspect the training outputs
+### 9. Inspect the training outputs
 
 After training finishes, open the run folder created under the path specified by `RUNS_DIR` in the training script.
 
@@ -174,20 +174,20 @@ The run folder should contain the following subfolders:
 
 Review the plots and reports to assess the model’s performance. Keep the `weights_cstyle_folded` folder for the Vitis HLS implementation.
 
-### 8. Create a new Vitis HLS project
+### 10. Create a new Vitis HLS project
 
 Open **Vitis HLS** and select **Create New Project**.
 
 Enter a project name and choose a location for the project, then click **Next** to continue through the project wizard.
 
 
-### 9. Set the top-level function
+### 11. Set the top-level function
 
 In the Vitis HLS project settings, set **Top Function** to `ds_cnn`.
 
 This name must exactly match the top-level function in the provided C++ source code. Vitis HLS uses this function as the entry point for generating the CNN hardware accelerator.
 
-### 10. Select the target FPGA part
+### 12. Select the target FPGA part
 
 During the Vitis HLS project setup, go to the Solution Configuration window and select the following FPGA part:
 
@@ -195,7 +195,7 @@ During the Vitis HLS project setup, go to the Solution Configuration window and 
 
 This is the Zynq-7020 device used on the PYNQ-Z2 board.
 
-### 11. Add the CNN source files
+### 13. Add the CNN source files
 
 Download the following files from the course GitHub repository and save them together in one folder on your computer:
 
@@ -206,13 +206,13 @@ Download the following files from the course GitHub repository and save them tog
 Open your Vitis HLS project and add all three files under **Source**.
 
 
-### 12. Add the test bench file
+### 14. Add the test bench file
 
 Download `ds_cnn_tb.cpp` from the course GitHub repository and save it in the same folder as the three source files.
 
 In your Vitis HLS project, add `ds_cnn_tb.cpp` under **Test Bench**. This file tests the CNN implementation using the test dataset.
 
-### 13. Copy the exported model weights
+### 15. Copy the exported model weights
 
 Copy the `weights_cstyle_folded` folder generated during Python training into the folder containing:
 
@@ -223,13 +223,13 @@ Copy the `weights_cstyle_folded` folder generated during Python training into th
 
 Keep the folder name `weights_cstyle_folded` unchanged and preserve all files inside it so the HLS source code can locate the exported weights.
 
-### 14. Download the HLS test dataset
+### 16. Download the HLS test dataset
 
 Download `dwpw_cnn_testing_data_aug_txt` from the course GitHub repository. If compressed, extract it into the same folder as the HLS source files, test bench, and `weights_cstyle_folded` folder.
 
 Keep the name `dwpw_cnn_testing_data_aug_txt` unchanged so the test bench can locate the test data.
 
-### 15. Run C synthesis and inspect the report
+### 17. Run C synthesis and inspect the report
 
 In Vitis HLS, select **Run C Synthesis**. Once synthesis finishes, open the **Synthesis Summary Report** and examine:
 
@@ -238,13 +238,13 @@ In Vitis HLS, select **Run C Synthesis**. Once synthesis finishes, open the **Sy
 
 These estimates indicate the accelerator’s expected execution time and FPGA resource requirements.
 
-### 16. Run C simulation and inspect the results
+### 18. Run C simulation and inspect the results
 
 In Vitis HLS, select **Run C Simulation**. In the simulation settings, enable **Clean Build**, then run the simulation.
 
 Once simulation finishes, inspect the resulting confusion matrices to assess the CNN’s classification performance on the test dataset.
 
-### 17. Export the RTL as a Vivado IP
+### 19. Export the RTL as a Vivado IP
 
 In Vitis HLS, select **Solution → Export RTL**.
 
@@ -255,13 +255,13 @@ In the **Export RTL** window:
 
 Start the export and wait for it to finish.
 
-### 18. Locate the exported IP package
+### 20. Locate the exported IP package
 
 After **Export RTL** finishes, open your Vitis HLS project’s solution folder, then open the `impl` folder.
 
 Confirm that `export.zip` is present. This ZIP file contains the packaged CNN IP for use in Vivado.
 
-### 19. Create the Vivado project and block design
+### 21. Create the Vivado project and block design
 
 Create a new project in **Vivado** and build the design shown in the course slides.
 
@@ -270,11 +270,11 @@ Create a new project in **Vivado** and build the design shown in the course slid
 - Confirm that the custom CNN IP appears in the **IP Catalog**, then add it and the remaining IP blocks. Connect them as shown in the slides.
 - Open the **Address Editor** and confirm that the CNN IP’s AXI control interface has an assigned address. If it appears under **Unassigned**, click **Auto Assign Address**.
 
-### 20. Set the top module in Vivado
+### 22. Set the top module in Vivado
 
 In Vivado’s **Sources** window, expand **Design Sources**, right-click the appropriate top-level module for your design, and select **Set as Top**. For a block design, select its generated **HDL wrapper** as the top module.
 
-### 21. Configure a GPIO for inference latency measurement (optional)
+### 23. Configure a GPIO for inference latency measurement (optional)
 
 If you intend to measure inference latency using an oscilloscope or logic analyzer, make the GPIO interface external and add appropriate pin constraints to your Vivado `.xdc` file. **If you do not use this GPIO, do not make the interface external.**
 
@@ -289,7 +289,7 @@ Drive the GPIO high before starting inference and low after inference completes.
 
 Apply the constraints before running implementation and generating the bitstream.
 
-### 22. Validate the design and generate the bitstream
+### 24. Validate the design and generate the bitstream
 
 In Vivado, open the block design and select **Validate Design**. Resolve any reported errors before continuing.
 
@@ -301,7 +301,7 @@ From the **Flow Navigator**, run the following steps in order:
 
 Wait for each step to complete successfully before proceeding to the next.
 
-### 23. Export the hardware platform
+### 25. Export the hardware platform
 
 Once the bitstream has been generated successfully, select **File → Export → Export Hardware** in Vivado.
 
@@ -310,7 +310,7 @@ In the export wizard, select **Include bitstream**, choose the output location, 
 This creates an `.xsa` hardware platform file containing the hardware design and bitstream for use in Vitis.
 
 
-### 24. Locate the exported XSA file
+### 26. Locate the exported XSA file
 
 Open a terminal and run the following command to search your home folder and its subfolders for `.xsa` files:
 
@@ -321,7 +321,7 @@ find ~ -type f -name "*.xsa"
 The output lists the full paths of matching files. Note the path of the `.xsa` file exported from your Vivado project, as you will select it when creating the platform project in Vitis.
 
 
-### 25. Create a platform project in Vitis
+### 27. Create a platform project in Vitis
 
 Open **Vitis** and select **Create Platform Project**.
 
@@ -334,37 +334,37 @@ Open **Vitis** and select **Create Platform Project**.
 7. Click **Finish** to create the platform project.
 
 
-### 26. Create an application project in Vitis
+### 28. Create an application project in Vitis
 
 After creating and generating the platform project, select **File → New → Application Project**.
 
 In the wizard, choose **Select a platform from repository**, select the platform you created in the previous step, and click **Next**.
 
-### 27. Select the application domain
+### 29. Select the application domain
 
 On the **Domain** screen, select the existing **standalone_domain** and click **Next**.
 
-### 28. Select the Hello World template
+### 30. Select the Hello World template
 
 On the **Templates** screen, select **Hello World** and click **Finish**.
 
 This creates a starter bare-metal C application, which you will modify in the next step to control the CNN accelerator.
 
 
-### 29. Replace the starter application code
+### 31. Replace the starter application code
 
 Download the provided Hello World C source file from the course GitHub repository.
 
 In Vitis, open the starter application’s `helloworld.c` file under **src**. Replace its contents with the code from the downloaded file, then save the changes.
 
 
-### 30. Build and run the application on the FPGA board
+### 32. Build and run the application on the FPGA board
 
 Connect the **PYNQ-Z2 board** to your computer using the USB Type-A to Micro-USB Type-B cable and power on the board.
 
 In Vitis, build the application and resolve any build errors. Once the build completes successfully, select **Run → Run As → Launch on Hardware** to program the FPGA and run the application.
 
-### 31. Prepare the test images and UART script
+### 33. Prepare the test images and UART script
 
 After programming the FPGA, download `New_Testing_Data` and `send_images_uart.py` from the course GitHub repository. Save the dataset folder and Python script together in one folder.
 
@@ -380,7 +380,7 @@ If desired, augment the test images using the same data augmentation script used
 
 Save the changes before running the script.
 
-### 32. Configure the serial port and run the test script
+### 34. Configure the serial port and run the test script
 
 Identify the `/dev/ttyUSB*` port connected to your board and set it as `SERIAL_PORT` in `send_images_uart.py`. For example:
 
