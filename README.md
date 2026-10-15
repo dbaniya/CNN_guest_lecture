@@ -122,7 +122,7 @@ Download `new_training_data` from the dataset link provided in the course materi
 
 Note the location of the `new_training_data` folder, as you will use this path in the data augmentation script.
 
-### 5. Augment the training dataset
+### 5. Augment the training dataset (optional)
 
 Open the data augmentation script and set `DATA_ROOT` to the absolute path of your `new_training_data` folder:
 
@@ -139,13 +139,19 @@ Save and run the script with the `cnn_env` virtual environment activated. After 
 
 Download `train_cnn.py` from the course GitHub repository and save it in your project folder.
 
-Open the script and set `ROOT` to the absolute path of the augmented dataset folder:
+Open the script and set `ROOT` to the absolute path of the dataset folder. If you are using the original dataset, use:
+
+```python
+ROOT = Path("/absolute/path/to/new_training_data")
+```
+
+If you have augmented the dataset, use:
 
 ```python
 ROOT = Path("/absolute/path/to/new_training_data_aug")
 ```
 
-Replace `/absolute/path/to/new_training_data_aug` with the actual folder path, then save the script.
+Replace the example path with the actual folder path, then save the script.
 
 With the `cnn_env` virtual environment activated, run:
 
