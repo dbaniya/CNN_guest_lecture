@@ -159,7 +159,14 @@ With the `cnn_env` virtual environment activated, run:
 python train_cnn.py
 ```
 
-Wait for training and evaluation to complete.
+Wait for training and evaluation to complete. For **20 epochs**, approximate CPU training times based on the measured runs are:
+
+| Dataset | Number of images | Approximate training time |
+|---|---:|---:|
+| Original dataset | 40,000 | 5–6 minutes |
+| Augmented dataset | 840,000 | 1 hour 51 minutes |
+
+Actual times depend on your hardware. Loading the dataset, evaluation, and saving outputs require additional time. Early stopping may finish training before all 20 epochs are completed.
 
 ### 9. Inspect the training outputs
 
