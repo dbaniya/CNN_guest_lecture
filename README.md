@@ -308,14 +308,26 @@ In Vivado’s **Sources** window, expand **Design Sources**, right-click the app
 
 ### 24. Configure a GPIO for inference latency measurement (optional)
 
-If you intend to measure inference latency using an oscilloscope or logic analyzer, make the GPIO interface external and add appropriate pin constraints to your Vivado `.xdc` file. **If you do not use this GPIO, do not make the interface external.**
+If you intend to measure inference latency using an oscilloscope or logic analyzer, make the GPIO interface external and add the following pin constraints to your Vivado `.xdc` file. **If you do not use this GPIO, do not make the interface external.**
 
-**The following constraints are only an example.** Tailor the package pin and I/O standard to the **PYNQ-Z2 board** and your intended connection. Ensure the port name matches your HDL wrapper.
+For the **PYNQ-Z2**, these constraints connect **`gpio_rtl_tri_io[0]`** to FPGA package pin **U7**, which connects to **physical pin 11** on the 40-pin Raspberry Pi header.
+
+| Identifier | Meaning |
+|---|---|
+| **GPIO17** | Raspberry Pi GPIO signal number |
+| **Pin 11** | Physical position on the 40-pin Raspberry Pi header |
+| **U7** | FPGA package pin connected to it on the PYNQ-Z2 |
+
+**GPIO17 does not mean physical pin 17.**
 
 ```tcl
-set_property PACKAGE_PIN N14    [get_ports {gpio_rtl_tri_io[0]}]
+set_property PACKAGE_PIN U7    [get_ports {gpio_rtl_tri_io[0]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {gpio_rtl_tri_io[0]}]
 ```
+
+Ensure that **`gpio_rtl_tri_io[0]`** matches the port name in your HDL wrapper.
+
+Connect the oscilloscope or logic analyzer signal probe to **physical pin 11** and its ground lead to a **GND pin** on the board.
 
 Drive the GPIO high before starting inference and low after inference completes. Measure the pulse duration to determine inference latency.
 
